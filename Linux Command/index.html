@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linux Command Execution Time Profiler</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Profiler home">
+        <span class="brand-icon">⌁</span>
+        <span><strong>LINUX<span class="accent">PROFILER</span></strong><small>OSSP · COMMAND ANALYTICS</small></span>
+      </a>
+      <div class="status"><span class="status-dot"></span> DEMO ENVIRONMENT</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span></span> OPERATING SYSTEMS MINI PROJECT</div>
+        <h1>Command Execution<br /><em>Time Profiler.</em></h1>
+        <p>Explore command output, compare execution durations, and understand how a profiler measures system command performance.</p>
+      </section>
+
+      <section class="workspace">
+        <div class="panel command-panel">
+          <div class="panel-heading"><div><span class="step">01</span><h2>Choose a command</h2></div><span class="tiny-label">SAFE DEMO</span></div>
+          <label for="commandSelect">COMMAND PRESET</label>
+          <select id="commandSelect">
+            <option value="pwd">pwd — Current directory</option>
+            <option value="date">date — System date and time</option>
+            <option value="whoami">whoami — Current user</option>
+            <option value="uname">uname -a — System information</option>
+            <option value="ls">ls -la — List files</option>
+            <option value="df">df -h — Disk usage</option>
+            <option value="free">free -h — Memory information</option>
+            <option value="uptime">uptime — System uptime</option>
+          </select>
+          <div class="command-preview"><span class="prompt">$</span><code id="commandPreview">pwd</code><span class="cursor"></span></div>
+
+          <div class="setting-row">
+            <div><label for="runs">REPETITIONS</label><p>Run the demo measurement multiple times</p></div>
+            <select id="runs" class="runs-select"><option>1</option><option>3</option><option selected>5</option></select>
+          </div>
+          <button id="runBtn" class="run-button"><span>▶</span> Run profiler <kbd>↵</kbd></button>
+          <p class="disclaimer"><span>ⓘ</span> Browser-only demo. No commands are executed on your computer; results are illustrative.</p>
+        </div>
+
+        <div class="panel results-panel">
+          <div class="panel-heading"><div><span class="step">02</span><h2>Performance overview</h2></div><span class="live-pill"><span></span> READY</span></div>
+          <div class="metrics">
+            <div class="metric"><span>AVERAGE TIME</span><strong id="avgTime">—<small> ms</small></strong><div class="metric-foot">Across selected runs</div></div>
+            <div class="metric"><span>FASTEST RUN</span><strong id="fastTime">—<small> ms</small></strong><div class="metric-foot">Minimum duration</div></div>
+            <div class="metric"><span>TOTAL RUNS</span><strong id="totalRuns">0</strong><div class="metric-foot">Measurement samples</div></div>
+          </div>
+          <div class="chart-title"><div><h3>Execution duration</h3><p>Time per repetition · milliseconds</p></div><span class="chart-legend"><i></i> Duration</span></div>
+          <div class="chart" id="chart"><div class="empty-chart"><span>⌁</span><p>Run a command to see the timing chart</p></div></div>
+        </div>
+      </section>
+
+      <section class="bottom-grid">
+        <div class="panel output-panel">
+          <div class="panel-heading"><div><span class="step">03</span><h2>Command output</h2></div><button class="text-button" id="copyBtn">Copy output ↗</button></div>
+          <div class="terminal">
+            <div class="terminal-top"><div class="window-dots"><i></i><i></i><i></i></div><span>demo-terminal</span><span class="terminal-lock">● READ ONLY</span></div>
+            <pre id="output"><span class="muted">Select a command and click “Run profiler” to view example output.</span></pre>
+          </div>
+        </div>
+        <div class="panel history-panel">
+          <div class="panel-heading"><div><span class="step">04</span><h2>Recent runs</h2></div><button class="text-button" id="clearBtn">Clear</button></div>
+          <div id="history" class="history-list"><div class="history-empty">Your recent measurements will appear here.</div></div>
+        </div>
+      </section>
+      <footer><span>LINUX PROFILER <span class="accent">/</span> OSSP PROJECT</span><span>Execution-time measurement concepts · Safe browser demo</span></footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
